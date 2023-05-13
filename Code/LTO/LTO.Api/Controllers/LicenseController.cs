@@ -19,7 +19,7 @@ namespace LTO.Api.Controllers
         {
             try
             {
-                var response = _license.GetLicensesAsync();
+                var response = await _license.GetLicensesAsync();
 
                 if(response == null)    
                     return NotFound();
@@ -50,6 +50,7 @@ namespace LTO.Api.Controllers
             }
         }
 
+        [HttpPost("SaveLicense")]
         public async Task<IActionResult> SaveLicenseAsync(LicenseDTO request)
         {
             try

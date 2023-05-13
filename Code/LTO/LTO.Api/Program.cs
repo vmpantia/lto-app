@@ -14,14 +14,14 @@ builder.Services.AddScoped<ILicenseService, LicenseService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("Policy",
-                      policy =>
-                      {
-                          policy.WithOrigins("http://localhost:3000/")
-                                .AllowAnyOrigin()
-                                .AllowAnyHeader()
-                                .AllowAnyMethod();
-                      });
+    //options.AddPolicy("Policy",
+    //                  policy =>
+    //                  {
+    //                      policy.WithOrigins("http://localhost:3000/")
+    //                            .AllowAnyOrigin()
+    //                            .AllowAnyHeader()
+    //                            .AllowAnyMethod();
+    //                  });
 });
 
 builder.Services.AddControllers();
@@ -40,7 +40,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors("Policy");
+//app.UseCors("Policy");
 
 app.UseAuthorization();
 

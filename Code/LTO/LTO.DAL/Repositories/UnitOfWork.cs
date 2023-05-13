@@ -16,7 +16,7 @@ namespace LTO.DAL.Repositories
         {
             get
             {
-                if (licenseRepo == null)
+                if (_licenseRepo == null)
                     _licenseRepo = new BaseRepository<License>(_db);
 
                 return _licenseRepo;
