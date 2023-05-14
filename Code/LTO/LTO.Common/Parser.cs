@@ -6,15 +6,16 @@ namespace LTO.Common
     {
         public static void ParseData<T1, T2>(T1 from, T2 to)
         {
-            if (from == null)
-                throw new CommonException("From data must have values.");
+            if (from == null || to == null)
+                throw new CommonException("Data must have values.");
 
             var properties = from.GetType().GetProperties();
 
             foreach(var property in properties)
             {
-                var value = property.GetValue(from, null);
-                property.SetValue(to, value);
+                var toProperty = to.GetType().GetProperty(property.Name);
+                if(toProperty != null)
+                    toProperty.SetValue(to, property.GetValue(from));
             }
         }
     }
