@@ -29,7 +29,7 @@ namespace LTO.DAL.DataAccess.Entities
         //Contact Details
         [Required, MaxLength(11)] public string ContactNo { get; set; }
         [Required, MaxLength(15)] public string? TelephoneNo { get; set; } //Not require
-        [Required, MaxLength(40)] public string? EmailAddress { get; set; } //Not require
+        [Required, MaxLength(50)] public string? EmailAddress { get; set; } //Not require
 
         //Address Details
         [Required, MaxLength(50)] public string AddressLine1 { get; set; }
