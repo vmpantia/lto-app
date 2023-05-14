@@ -1,7 +1,15 @@
-const Layout = () => {
+type Props = {
+  email:string;
+}
+
+const Layout = (props:Props) => {
+  const {email} = props;
   return (
     <div>
-      Layout
+      {email}
+      <button onClick={() => {
+        sessionStorage.clear();
+      }}>logout</button>
     </div>
   )
 }
