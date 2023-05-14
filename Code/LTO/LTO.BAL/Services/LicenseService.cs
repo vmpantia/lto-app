@@ -34,7 +34,6 @@ namespace LTO.BAL.Services
             if (isAdd)
                 await _uow.licenseRepo.AddEntityAsync(request.ConvertToEntity());
             else
-            {
                 await _uow.licenseRepo.UpdateAsync(request.InternalID, new
                 {
                     //request.InternalID,
@@ -69,7 +68,6 @@ namespace LTO.BAL.Services
                     //request.CreatedDate,
                     ModifiedDate = DateTime.Now,
                 });
-            }
 
             await _uow.SaveAsync();
         }

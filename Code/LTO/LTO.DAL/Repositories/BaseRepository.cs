@@ -21,7 +21,7 @@ namespace LTO.DAL.Repositories
             return await _table.ToListAsync();
         }
 
-        public IEnumerable<T> GetConditionAsync(Func<T, bool> condition)
+        public IEnumerable<T> GetByCondition(Func<T, bool> condition)
         {
             return _table.Where(condition).ToList();
         }

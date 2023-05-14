@@ -9,6 +9,7 @@ namespace LTO.DAL.Repositories
     {
         private readonly LTODbContext _db;
         private IBaseRepository<License> _licenseRepo;
+        private IBaseRepository<User> _userRepo;
 
         public UnitOfWork(LTODbContext db) => _db = db;
 
@@ -20,6 +21,17 @@ namespace LTO.DAL.Repositories
                     _licenseRepo = new BaseRepository<License>(_db);
 
                 return _licenseRepo;
+            }
+        }
+
+        public IBaseRepository<User> userRepo
+        {
+            get
+            {
+                if (_userRepo == null)
+                    _userRepo = new BaseRepository<User>(_db);
+
+                return _userRepo;
             }
         }
 

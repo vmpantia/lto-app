@@ -1,13 +1,13 @@
 ﻿using LTO.BAL.Contractors;
 using LTO.BAL.Models.DTOs;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
 
 namespace LTO.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class LicenseController : ControllerBase
     {
         private readonly ILicenseService _license;
