@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 
+// Styles
+import './style.css';
+
 // Components
 import App from './App';
 
-// Styles
-import './style.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

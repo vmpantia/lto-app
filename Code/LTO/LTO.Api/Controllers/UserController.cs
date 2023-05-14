@@ -23,7 +23,11 @@ namespace LTO.Api.Controllers
                     return NotFound();
 
                 var token = _user.GenerateAccesToken(result);
-                return Ok(token);
+                return Ok(new
+                {
+                    email = result.Email,
+                    accessToken = token
+                });
             }
             catch (Exception ex)
             {
