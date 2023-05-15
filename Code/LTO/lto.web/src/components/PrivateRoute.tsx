@@ -1,26 +1,19 @@
+import { ReactNode } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
-type Props = {
-    childComponent:any;
+interface Props {
+    children:ReactNode;
 }
 
-const PrivateRoute = (props:Props) => {
-    const { childComponent } = props
+const PrivateRoute:React.FC<Props> = ({ children }) => {
     const location = useLocation()
     const isAuthenticated = sessionStorage.getItem("userInfo") !== null;
-
     return isAuthenticated ? 
-    (
-        <>{childComponent}</>
-    ) 
+    (<>{children}</>) 
     :
-    (
-        <>
-            <Navigate replace={true} 
-                        to="/login"
-                        state={{ from: `${location.pathname}${location.search}` }} />
-        </>
-    )
+    (<Navigate replace={true} 
+                to="/login"
+                state={{ from: `${location.pathname}${location.search}` }} />)
 }
 
 export default PrivateRoute

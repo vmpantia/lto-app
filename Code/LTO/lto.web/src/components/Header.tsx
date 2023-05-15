@@ -1,12 +1,11 @@
 import { UserCircleIcon } from '@heroicons/react/24/solid'
 
-type Props = {
+interface Props {
     email:string;
     onLogoutClickedHandler: () => void;
 }
 
-const Header = (props:Props) => {
-    const { email, onLogoutClickedHandler } = props;
+const Header:React.FC<Props> = ({ email, onLogoutClickedHandler }) => {
     return (
         <div className='h-16 w-full p-2 bg-blue-700 border-b-2 border-blue-800 flex justify-between'>
             <div className='inline-flex'>

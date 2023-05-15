@@ -1,11 +1,10 @@
-type Props = {
+interface Props {
     type:'submit' | 'reset' | 'button' | undefined;
     text:string;
     isDisabled:boolean;
 }
 
-const Button = (props:Props) => {
-    const { type, text, isDisabled } = props;
+const Button:React.FC<Props> = ({ type, text, isDisabled }) => {
     return (
         <button type={type}
                 className='w-full py-2 text-sm text-white

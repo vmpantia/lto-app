@@ -11,9 +11,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/login"    element={<Login />}/>
-        <Route path="/"         element={<PrivateRoute childComponent={<Layout />} />}>
-          <Route path="/doctor" element={<PrivateRoute childComponent={<Layout />} />}/>
-          <Route path="/nurse"  element={<PrivateRoute childComponent={<Layout />} />}/>
+        <Route path="/"         element={<PrivateRoute><Layout /></PrivateRoute>}>
+          <Route path="/doctor" element={<PrivateRoute><Layout /></PrivateRoute>}/>
+          <Route path="/nurse"  element={<PrivateRoute><Layout /></PrivateRoute>}/>
         </Route>
       </Routes>
     </BrowserRouter>

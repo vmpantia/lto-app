@@ -1,4 +1,4 @@
-type Props = {
+interface Props {
     type:React.HTMLInputTypeAttribute;
     label:string;
     placeholder:string;
@@ -7,8 +7,7 @@ type Props = {
     onChangedHandler: (e:any) => void;
 }
 
-const InputField = (props:Props) => {
-    const { type, label, placeholder, value, isDisabled, onChangedHandler } = props;
+const InputField:React.FC<Props> = ({ type, label, placeholder, value, isDisabled, onChangedHandler }) => {
     return (
         <div className='mb-2'>
             <label className='flex text-sm mb-2'>{label}</label>
