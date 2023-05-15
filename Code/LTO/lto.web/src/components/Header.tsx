@@ -8,7 +8,7 @@ type Props = {
 const Header = (props:Props) => {
     const { email, onLogoutClickedHandler } = props;
     return (
-        <div className='h-16 p-2 bg-blue-700 border-b-2 border-blue-800 flex justify-between'>
+        <div className='h-16 w-full p-2 bg-blue-700 border-b-2 border-blue-800 flex justify-between'>
             <div className='inline-flex'>
             <img className='h-12 w-12 mr-2' 
                     src={require('../assets/Icons/lto-icon.png')}>

@@ -12,7 +12,17 @@ const Layout = () => {
   }
 
   return (
-    <Header email={userInfo.email} onLogoutClickedHandler={logoutClick}  />
+    <>
+      <Header email={userInfo.email} onLogoutClickedHandler={logoutClick} />
+      <div className='inline-flex w-full'>
+        <div className='w-28 bg-black'>
+          Sidebar
+        </div>
+        <div>
+          Content
+        </div>
+      </div>
+    </>
   )
 }
 
