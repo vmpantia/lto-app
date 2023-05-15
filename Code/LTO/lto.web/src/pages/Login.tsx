@@ -54,8 +54,7 @@ const Login = () => {
         <>
             <div className='flex justify-center items-center h-screen'>
                 <img className='h-80 w-80 m-10' 
-                        src={require('../assets/Icons/lto-icon.png')} 
-                        alt='No LTO Icon found'>
+                        src={require('../assets/Icons/lto-icon.png')}>
                 </img>
                 <div className='w-1/4'>
                     <form
