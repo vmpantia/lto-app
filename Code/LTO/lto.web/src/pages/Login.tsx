@@ -44,7 +44,7 @@ const Login = () => {
                         if(err.response === undefined)
                             setErrorMessage(err.message);
                         else if (err.response.data !== undefined)
-                            setErrorMessage(err.data);
+                            setErrorMessage(err.response.data);
                         else 
                             setErrorMessage("Error in sending request for login.");
                     })
