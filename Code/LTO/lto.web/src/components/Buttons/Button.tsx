@@ -9,8 +9,8 @@ const Button = (props:Props) => {
     return (
         <button type={type}
                 className='w-full py-2 text-sm text-white
-                            rounded bg-blue-600
-                            hover:bg-blue-700
+                            rounded bg-blue-700
+                            hover:bg-blue-800
                             disabled:bg-blue-500'
                 disabled={isDisabled}>
                 {text}
