@@ -1,13 +1,10 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-type Props = {
-    setUser:any;
-}
-
-const Login = (props:Props) => {
-    const {setUser} = props;
-    const [loginName, setLogonName] = useState("");
+const Login = () => {
+    const navigate = useNavigate();
+    const [loginName, setLoginName] = useState("");
     const [password, setPassword] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
@@ -27,7 +24,7 @@ const Login = (props:Props) => {
 
     const AuthenticateUser = async(credentials:any) => {
         await axios.post("https://localhost:7077/api/User/Login",
-                    JSON.stringify(credentials), 
+                        JSON.stringify(credentials), 
                     {
                         headers: {
                             'Content-Type':'application/json',
@@ -39,7 +36,8 @@ const Login = (props:Props) => {
                             throw new Error("Failed to send request.");
 
                         //Handle Status 200
-                        setUser(success.data);
+                        sessionStorage.setItem('userInfo', JSON.stringify(success.data)); /* Store userInfo to Session */
+                        navigate("/"); /* Redirect to Layout Page */
                     })
                     .catch(err => {
                         setErrorMessage(err.response.data);
@@ -63,12 +61,12 @@ const Login = (props:Props) => {
                     <input className='w-full px-3 py-2 text-sm 
                                         border border-gray-400 
                                         rounded
-                                    focus:outline-blue-300
+                                    focus:outline-blue-500
                                     disabled:bg-gray-100' 
                             type='text' 
                             placeholder='Enter your Username or Email'
                             value={loginName}
-                            onChange={(e) => setLogonName(e.target.value)}
+                            onChange={(e) => setLoginName(e.target.value)}
                             disabled={isLoading}></input>
                 </div>
                 <div className='mb-4'>
@@ -76,7 +74,7 @@ const Login = (props:Props) => {
                     <input className='w-full px-3 py-2 text-sm 
                                         border border-gray-400 
                                         rounded
-                                    focus:outline-blue-300
+                                    focus:outline-blue-500
                                     disabled:bg-gray-100' 
                             type='password' 
                             placeholder='Enter your Password'

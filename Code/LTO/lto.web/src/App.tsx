@@ -1,26 +1,19 @@
 import { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 // Components
 import Layout from "./pages/Layout";
 import Login from "./pages/Login";
-
-// Custom Hooks
-import useUserInfo from "./components/hooks/useUserInfo";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
-  const { userInfo, setUserInfo } = useUserInfo();
-  if(!userInfo) 
-    return (<Login setUser={setUserInfo} />)
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout email={userInfo.email} />}>
-          <Route index element={<Layout email={userInfo.email} />}/>
-          <Route path="patient" element={<Layout email={userInfo.email} />}/>
-          <Route path="doctor" element={<Layout email={userInfo.email} />}/>
-          <Route path="nurse" element={<Layout email={userInfo.email} />}/>
+        <Route path="/login"    element={<Login />}/>
+        <Route path="/"         element={<PrivateRoute childComponent={<Layout />} />}>
+          <Route path="/doctor" element={<PrivateRoute childComponent={<Layout />} />}/>
+          <Route path="/nurse"  element={<PrivateRoute childComponent={<Layout />} />}/>
         </Route>
       </Routes>
     </BrowserRouter>
