@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import InputField from '../components/Inputs/InputField';
+import Button from '../components/Buttons/Button';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -19,7 +21,6 @@ const Login = () => {
             await AuthenticateUser({ loginName, password });
             setIsLoading(false);
         }, 500);
-
     }
 
     const AuthenticateUser = async(credentials:any) => {
@@ -56,45 +57,24 @@ const Login = () => {
                     </div>
                 }
 
-                <div className='mb-2'>
-                    <label className='flex text-sm mb-2'>Username / Email</label>
-                    <input className='w-full px-3 py-2 text-sm 
-                                        border border-gray-400 
-                                        rounded
-                                    focus:outline-blue-500
-                                    disabled:bg-gray-100' 
-                            type='text' 
-                            placeholder='Enter your Username or Email'
-                            value={loginName}
-                            onChange={(e) => setLoginName(e.target.value)}
-                            disabled={isLoading}></input>
-                </div>
-                <div className='mb-4'>
-                    <label className='flex text-sm mb-2'>Password</label>
-                    <input className='w-full px-3 py-2 text-sm 
-                                        border border-gray-400 
-                                        rounded
-                                    focus:outline-blue-500
-                                    disabled:bg-gray-100' 
-                            type='password' 
-                            placeholder='Enter your Password'
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            disabled={isLoading}></input>
-                </div>
+                <InputField type='text' 
+                            label='Username or Email' 
+                            placeholder='Enter your Username or Email' 
+                            value={loginName} 
+                            isDisabled={isLoading} 
+                            onChangedHandler={(e) => setLoginName(e.target.value)} />
+
+                <InputField type='password' 
+                            label='Password' 
+                            placeholder='Enter your Password' 
+                            value={password} 
+                            isDisabled={isLoading} 
+                            onChangedHandler={(e) => setPassword(e.target.value)} />
+
                 <div>
-                    <button className='w-full py-2 text-sm text-white
-                                        rounded bg-blue-600
-                                        hover:bg-blue-700
-                                        disabled:bg-blue-500'
-                            type='submit'
-                            disabled={isLoading}>Login</button>
-                    <p className='text-center text-sm font-medium my-2'>or</p>
-                    <button className='w-full py-2 text-sm text-white
-                                        rounded bg-blue-600
-                                        hover:bg-blue-700
-                                        disabled:bg-blue-500'
-                            disabled={isLoading}>Create Account</button>
+                    <Button type='submit' text='Login' isDisabled={isLoading} />
+                    <p className='text-center text-sm font-medium my-2'>- or -</p>
+                    <Button type='submit' text='Create Account' isDisabled={isLoading} />
                 </div>
             </form>
         </div>
