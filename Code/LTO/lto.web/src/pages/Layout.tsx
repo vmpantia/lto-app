@@ -13,9 +13,6 @@ const Layout = () => {
       <Header />
       <div className='inline-flex w-full'>
         <div className='w-60 m-3'>
-          <p className='flex text-lg font-medium'>
-            Menu
-          </p>
           <ul>
             <li><LinkButton Text='Profile' IconComponent = {<UserCircleIcon />} URL='/' /></li>
             <li><LinkButton Text='Licensing' IconComponent = {<CreditCardIcon />} URL='/' /></li>
