@@ -1,8 +1,15 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+
+//Components
 import InputField from '../components/Inputs/InputField';
 import Button from '../components/Buttons/Button';
+
+//API Instance
+import api from '../api/axiosAPI';
+
+//Constant
+import { USER_LOGIN_URL } from '../model/constant';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -18,26 +25,20 @@ const Login = () => {
 
         //Set timeout for Authentication
         setTimeout(async () => {
-            await AuthenticateUser({ loginName, password });
+            await authUser({ loginName, password });
             setIsLoading(false);
         }, 500);
     }
 
-    const AuthenticateUser = async(credentials:any) => {
-        await axios.post("https://localhost:7077/api/User/Login",
-                        JSON.stringify(credentials), 
-                    {
-                        headers: {
-                            'Content-Type':'application/json',
-                            'Accept': 'application/json',
-                        }
-                    })
-                    .then(success => {
-                        if(success.status !== 200)
+    const authUser = async(credentials:any) => {
+        await api.post(USER_LOGIN_URL,
+                        JSON.stringify(credentials))
+                    .then(res => {
+                        if(res.status !== 200)
                             throw new Error("Failed to send request.");
 
                         //Handle Status 200
-                        sessionStorage.setItem('userInfo', JSON.stringify(success.data)); /* Store userInfo to Session */
+                        sessionStorage.setItem('userInfo', JSON.stringify(res.data)); /* Store userInfo to Session */
                         navigate("/"); /* Redirect to Layout Page */
                     })
                     .catch(err => {
