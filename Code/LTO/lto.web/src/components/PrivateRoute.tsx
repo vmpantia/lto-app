@@ -1,14 +1,18 @@
 import { ReactNode } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
+//Services
+import { isAuthenticated } from '../services/authService';
+
 interface Props {
     children:ReactNode;
 }
 
+
+
 const PrivateRoute:React.FC<Props> = ({ children }) => {
-    const location = useLocation()
-    const isAuthenticated = sessionStorage.getItem("userInfo") !== null;
-    return isAuthenticated ? 
+    const location = useLocation();
+    return isAuthenticated() ? 
     (<>{children}</>) 
     :
     (<Navigate replace={true} 

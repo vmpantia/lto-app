@@ -5,22 +5,22 @@ import { useNavigate } from 'react-router-dom';
 import InputField from '../components/Inputs/InputField';
 import Button from '../components/Buttons/Button';
 
-//API Instance
-import api from '../api/axiosAPI';
+//Services
+import { loginUser } from '../services/authService';
 
-//Constant
-import { USER_LOGIN_URL } from '../model/constant';
+//Constants
+import { STRING_EMPTY, URL_LAYOUT } from '../model/constant';
 
 const Login = () => {
     const navigate = useNavigate();
-    const [loginName, setLoginName] = useState("");
-    const [password, setPassword] = useState("");
+    const [loginName, setLoginName] = useState(STRING_EMPTY);
+    const [password, setPassword] = useState(STRING_EMPTY);
     const [isLoading, setIsLoading] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState(STRING_EMPTY);
 
     const onSubmitLogin = async (e:any) => {
         e.preventDefault();
-        setErrorMessage("");
+        setErrorMessage(STRING_EMPTY);
         setIsLoading(true);
 
         //Set timeout for Authentication
@@ -31,24 +31,11 @@ const Login = () => {
     }
 
     const authUser = async(credentials:any) => {
-        await api.post(USER_LOGIN_URL,
-                        JSON.stringify(credentials))
-                    .then(res => {
-                        if(res.status !== 200)
-                            throw new Error("Failed to send request.");
-
-                        //Handle Status 200
-                        sessionStorage.setItem('userInfo', JSON.stringify(res.data)); /* Store userInfo to Session */
-                        navigate("/"); /* Redirect to Layout Page */
-                    })
-                    .catch(err => {
-                        if(err.response === undefined)
-                            setErrorMessage(err.message);
-                        else if (err.response.data !== undefined)
-                            setErrorMessage(err.data);
-                        else 
-                            setErrorMessage("Error in sending request for login.");
-                    })
+        await loginUser(credentials)
+                .then(() => navigate(URL_LAYOUT))
+                .catch(err => {
+                    setErrorMessage(err.message);
+                })
     }
     
     return (

@@ -1,11 +1,20 @@
-import { UserCircleIcon } from '@heroicons/react/24/solid'
+import { useNavigate } from 'react-router-dom';
 
-interface Props {
-    email:string;
-    onLogoutClickedHandler: () => void;
-}
+//Services
+import { getEmail, logoutUser } from '../services/authService';
 
-const Header:React.FC<Props> = ({ email, onLogoutClickedHandler }) => {
+//Constants
+import { URL_LOGIN } from '../model/constant';
+
+const Header = () => {
+    const navigate = useNavigate();
+    const email = getEmail();
+    
+    const onLogoutClick = () => {
+        logoutUser();
+        navigate(URL_LOGIN);
+    }
+
     return (
         <div className='h-16 w-full p-2 bg-blue-700 border-b-2 border-blue-800 flex justify-between'>
             <div className='inline-flex'>
@@ -23,7 +32,7 @@ const Header:React.FC<Props> = ({ email, onLogoutClickedHandler }) => {
             <div className='flex justify-end items-center text-white'>
                 <div className='text-xs mr-2'> 
                     <p>{email}</p>
-                    <button className='float-right font-medium' onClick={onLogoutClickedHandler}>Logout</button>
+                    <button className='float-right font-medium' onClick={onLogoutClick}>Logout</button>
                 </div>
             </div>
         </div>
