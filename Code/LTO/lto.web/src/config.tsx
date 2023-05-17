@@ -1,5 +1,8 @@
-import UserCircleIcon from "@heroicons/react/24/solid/UserCircleIcon";
+//Component Properties
 import { SidebarButtonProps } from "./model/Poperties/ComponentProperties";
+
+//Icons
+import UserCircleIcon from "@heroicons/react/24/solid/UserCircleIcon";
 import CreditCardIcon from "@heroicons/react/24/solid/CreditCardIcon";
 import TruckIcon from "@heroicons/react/24/solid/TruckIcon";
 import ClipboardDocumentListIcon from "@heroicons/react/24/solid/ClipboardDocumentListIcon";
@@ -18,8 +21,8 @@ export const SidebarButtons:SidebarButtonProps[] = [
     },
     {
         icon: <TruckIcon />,
-        text: "Vechicle",
-        url: "/Vechicle",
+        text: "Vechicles",
+        url: "/Vechicles",
     },
     {
         icon: <ClipboardDocumentListIcon />,
