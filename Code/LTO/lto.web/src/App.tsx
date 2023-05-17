@@ -11,9 +11,12 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/login"    element={<Login />}/>
-        <Route path="/"         element={<PrivateRoute><Layout /></PrivateRoute>}>
-          <Route path="/doctor" element={<PrivateRoute><Layout /></PrivateRoute>}/>
-          <Route path="/nurse"  element={<PrivateRoute><Layout /></PrivateRoute>}/>
+        <Route path="/"               element={<PrivateRoute><Layout /></PrivateRoute>}>
+          <Route path="/Profile"    element={<PrivateRoute><Layout /></PrivateRoute>}/>
+          <Route path="/Licensing"    element={<PrivateRoute><Layout /></PrivateRoute>}/>
+          <Route path="/Vechicle"     element={<PrivateRoute><Layout /></PrivateRoute>}/>
+          <Route path="/Transactions" element={<PrivateRoute><Layout /></PrivateRoute>}/>
+          <Route path="/Documents"    element={<PrivateRoute><Layout /></PrivateRoute>}/>
         </Route>
       </Routes>
     </BrowserRouter>
