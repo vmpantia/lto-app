@@ -1,4 +1,5 @@
 //Components
+import { Outlet } from 'react-router-dom';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 
@@ -9,7 +10,7 @@ const Layout = () => {
       <div className='inline-flex w-full'>
         <Sidebar />
         <div className='m-3'>
-          Content
+          <Outlet />
         </div>
       </div>
     </>

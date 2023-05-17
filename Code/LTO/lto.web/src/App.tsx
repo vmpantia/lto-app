@@ -1,10 +1,12 @@
-import { useState } from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // Components
+import PrivateRoute from "./components/PrivateRoute";
+
+//Pages
 import Layout from "./pages/Layout";
 import Login from "./pages/Login";
-import PrivateRoute from "./components/PrivateRoute";
+import Licensing from "./pages/Licensing";
 
 function App() {
   return (
@@ -13,7 +15,7 @@ function App() {
         <Route path="/login"    element={<Login />}/>
         <Route path="/"               element={<PrivateRoute><Layout /></PrivateRoute>}>
           <Route path="/Profile"    element={<PrivateRoute><Layout /></PrivateRoute>}/>
-          <Route path="/Licensing"    element={<PrivateRoute><Layout /></PrivateRoute>}/>
+          <Route path="/Licensing"    element={<PrivateRoute><Licensing /></PrivateRoute>}/>
           <Route path="/Vechicle"     element={<PrivateRoute><Layout /></PrivateRoute>}/>
           <Route path="/Transactions" element={<PrivateRoute><Layout /></PrivateRoute>}/>
           <Route path="/Documents"    element={<PrivateRoute><Layout /></PrivateRoute>}/>

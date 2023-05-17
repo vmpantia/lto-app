@@ -1,7 +1,17 @@
 import { ReactNode } from "react";
 
 export interface SidebarButtonProps {
-    Icon:ReactNode;
-    Text:string;
-    Url:string;
+    icon:ReactNode;
+    text:string;
+    url:string;
+}
+
+export interface PrivateRouteProps {
+    children:ReactNode;
+}
+
+export interface PageTitleProps {
+    icon:ReactNode;
+    title:string;
+    description:string;
 }

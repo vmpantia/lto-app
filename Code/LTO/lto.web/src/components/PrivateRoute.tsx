@@ -1,16 +1,12 @@
-import { ReactNode } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
 //Services
 import { isAuthenticated } from '../services/authService';
 
-interface Props {
-    children:ReactNode;
-}
+//Properties
+import { PrivateRouteProps } from '../model/Poperties/ComponentProperties';
 
-
-
-const PrivateRoute:React.FC<Props> = ({ children }) => {
+const PrivateRoute:React.FC<PrivateRouteProps> = ({ children }) => {
     const location = useLocation();
     return isAuthenticated() ? 
     (<>{children}</>) 

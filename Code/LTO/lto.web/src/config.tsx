@@ -7,28 +7,28 @@ import ClipboardDocumentIcon from "@heroicons/react/24/solid/ClipboardDocumentIc
 
 export const SidebarButtons:SidebarButtonProps[] = [
     {
-        Icon: <UserCircleIcon />,
-        Text: "Profile",
-        Url: "/Profile",
+        icon: <UserCircleIcon />,
+        text: "Profile",
+        url: "/Profile",
     },
     {
-        Icon: <CreditCardIcon />,
-        Text: "Licensing",
-        Url: "/Licensing",
+        icon: <CreditCardIcon />,
+        text: "Licensing",
+        url: "/Licensing",
     },
     {
-        Icon: <TruckIcon />,
-        Text: "Vechicle",
-        Url: "/Vechicle",
+        icon: <TruckIcon />,
+        text: "Vechicle",
+        url: "/Vechicle",
     },
     {
-        Icon: <ClipboardDocumentListIcon />,
-        Text: "Transactions",
-        Url: "/Transactions",
+        icon: <ClipboardDocumentListIcon />,
+        text: "Transactions",
+        url: "/Transactions",
     },
     {
-        Icon: <ClipboardDocumentIcon />,
-        Text: "Documents",
-        Url: "/Documents",
+        icon: <ClipboardDocumentIcon />,
+        text: "Documents",
+        url: "/Documents",
     },
 ] 
