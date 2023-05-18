@@ -10,6 +10,7 @@ namespace LTO.BAL.Extensions
         {
             var dto = new UserDTO();
             Parser.ParseData(data, dto);
+            dto.StatusDescription = Parser.ParseStatus(dto.Status);
             return dto;
         }
         public static User ConvertToEntity(this UserDTO data)

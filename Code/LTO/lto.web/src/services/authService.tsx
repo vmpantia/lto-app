@@ -46,3 +46,11 @@ export const isAuthenticated = ():boolean => {
 
     return email;
   }
+
+  export const getToken = ():string => {
+    let token = STRING_EMPTY;
+    if(isAuthenticated())
+        token = JSON.parse(sessionStorage.getItem(SESSION_USER_INFO) as string).accessToken;
+
+    return token;
+  }

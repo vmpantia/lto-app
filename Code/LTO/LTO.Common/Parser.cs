@@ -1,4 +1,5 @@
-﻿using LTO.Common.Exceptions;
+﻿using LTO.Common.Constants;
+using LTO.Common.Exceptions;
 
 namespace LTO.Common
 {
@@ -18,5 +19,20 @@ namespace LTO.Common
                     toProperty.SetValue(to, property.GetValue(from));
             }
         }
+
+        public static string ParseStatus(int status)
+        {
+            switch(status)
+            {
+                case Status.ENABLED_INT:
+                    return Status.ENABLED_STR;
+                case Status.DISABLED_INT:
+                    return Status.DISABLED_STR;
+                case Status.DELETION_INT:
+                    return Status.DELETION_STR;
+                default:
+                    return Default.NA;
+            }
+        } 
     }
 }

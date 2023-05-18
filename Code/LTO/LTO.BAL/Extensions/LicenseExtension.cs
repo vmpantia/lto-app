@@ -10,6 +10,7 @@ namespace LTO.BAL.Extensions
         {
             var dto = new LicenseDTO();
             Parser.ParseData(data, dto);
+            dto.StatusDescription = Parser.ParseStatus(dto.Status);
             return dto;
         }
         public static License ConvertToEntity(this LicenseDTO data)
