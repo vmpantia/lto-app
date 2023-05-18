@@ -7,6 +7,7 @@ export const STRING_EMPTY = "";
 //API URLs
 export const API_URL = "https://localhost:7077/api/";
 export const API_URL_USER_LOGIN = "User/Login";
+export const API_URL_GET_LICENSES = "License/GetLicenses";
 
 //URLs
 export const URL_LOGIN = "/login";

@@ -8,20 +8,28 @@ import CreditCardIcon from "@heroicons/react/24/solid/CreditCardIcon"
 
 //DTO
 import { LicenseDTO } from "../model/DTOs/LicenseDTO"
+
+//API
 import axiosAPI from "../api/axiosAPI"
+
+//Services
 import { getToken } from "../services/authService"
+import { API_URL_GET_LICENSES } from "../model/constant"
+import Loader from "../components/Loader"
 
 const Licensing = () => {
     const [licenseList, setLicenseList] = useState([] as LicenseDTO[])
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         setTimeout(() => {
             fetctLicenceList();
-        })
+            setIsLoading(false);
+        }, 1000)
     }, [])
 
     const fetctLicenceList = async () => {
-        await axiosAPI.get("License/GetLicenses",
+        await axiosAPI.get(API_URL_GET_LICENSES,
                             {
                                 headers: {
                                     Authorization: `Bearer ${getToken()}`
@@ -38,7 +46,7 @@ const Licensing = () => {
         <>
             <PageTitle icon={<CreditCardIcon />} 
                         title="Licensing" 
-                        description="In this page you can see all the license stored in the system." />
+                        description="In this page you can see all the license stored in the system." />      
             <section>
                 <table className="w-full text-sm text-center">
                     <thead>
@@ -56,28 +64,37 @@ const Licensing = () => {
                     </thead>
                     <tbody>
                         {
-                            licenseList.length == 0 ? 
-                                <tr>
-                                    <td className="p-2" colSpan={8}>
-                                        No records found in the system.
-                                    </td>
-                                </tr>
+                            isLoading ? 
+                            <tr>
+                                <td className="p-5" colSpan={9}>
+                                    <Loader />
+                                </td>
+                            </tr>
                             :
-                                licenseList.map(data => {
-                                    return (
-                                        <tr key={data.internalID}>
-                                            <td className="p-2"><input type="checkbox"></input></td>
-                                            <td className="p-2">{data.licenseCode}</td>
-                                            <td className="p-2">{`${data.lastName}, ${data.firstName}`}</td>
-                                            <td className="p-2">{data.city}</td>
-                                            <td className="p-2">{data.renewDate?.toString()}</td>
-                                            <td className="p-2">{data.expirationDate?.toString()}</td>
-                                            <td className="p-2">{data.statusDescription}</td>
-                                            <td className="p-2">{data.createdDate?.toString()}</td>
-                                            <td className="p-2">{data.modifiedDate?.toString()}</td>
-                                        </tr>
-                                    )
-                                })
+                            (
+                                licenseList.length == 0 ? 
+                                    <tr>
+                                        <td className="p-5" colSpan={9}>
+                                            No records found in the system.
+                                        </td>
+                                    </tr>
+                                :
+                                    licenseList.map(data => {
+                                        return (
+                                            <tr key={data.internalID}>
+                                                <td className="p-2"><input type="checkbox"></input></td>
+                                                <td className="p-2">{data.licenseCode}</td>
+                                                <td className="p-2">{`${data.lastName}, ${data.firstName}`}</td>
+                                                <td className="p-2">{data.city}</td>
+                                                <td className="p-2">{data.renewDate?.toString()}</td>
+                                                <td className="p-2">{data.expirationDate?.toString()}</td>
+                                                <td className="p-2">{data.statusDescription}</td>
+                                                <td className="p-2">{data.createdDate?.toString()}</td>
+                                                <td className="p-2">{data.modifiedDate?.toString()}</td>
+                                            </tr>
+                                        )
+                                    })
+                            )
                         }
                     </tbody>
                 </table>
