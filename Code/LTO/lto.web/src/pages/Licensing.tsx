@@ -2,9 +2,10 @@ import { useEffect, useState } from "react"
 
 //Components
 import PageTitle from "../components/Pages/PageTitle"
+import Loader from "../components/Loader"
 
 //Icons
-import CreditCardIcon from "@heroicons/react/24/solid/CreditCardIcon"
+import { CreditCardIcon } from "@heroicons/react/24/solid"
 
 //DTO
 import { LicenseDTO } from "../model/DTOs/LicenseDTO"
@@ -15,7 +16,6 @@ import axiosAPI from "../api/axiosAPI"
 //Services
 import { getToken } from "../services/authService"
 import { API_URL_GET_LICENSES } from "../model/constant"
-import Loader from "../components/Loader"
 
 const Licensing = () => {
     const [licenseList, setLicenseList] = useState([] as LicenseDTO[])

@@ -1,6 +1,8 @@
 //Components
 import PageTitle from "../components/Pages/PageTitle"
-import TruckIcon from "@heroicons/react/24/solid/TruckIcon"
+
+//Icons
+import { TruckIcon } from "@heroicons/react/24/solid"
 
 const Vehicles = () => {
     return (

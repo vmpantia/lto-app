@@ -2,11 +2,7 @@
 import { SidebarButtonProps } from "./model/Poperties/ComponentProperties";
 
 //Icons
-import UserCircleIcon from "@heroicons/react/24/solid/UserCircleIcon";
-import CreditCardIcon from "@heroicons/react/24/solid/CreditCardIcon";
-import TruckIcon from "@heroicons/react/24/solid/TruckIcon";
-import ClipboardDocumentListIcon from "@heroicons/react/24/solid/ClipboardDocumentListIcon";
-import ClipboardDocumentIcon from "@heroicons/react/24/solid/ClipboardDocumentIcon";
+import { UserCircleIcon, CreditCardIcon, TruckIcon, ClipboardDocumentIcon, ClipboardDocumentListIcon } from '@heroicons/react/24/solid'
 
 export const SidebarButtons:SidebarButtonProps[] = [
     {
