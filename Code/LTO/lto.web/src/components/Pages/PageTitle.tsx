@@ -3,7 +3,7 @@ import { PageTitleProps } from '../../model/Poperties/ComponentProperties'
 
 const PageTitle = ({icon, title, description}:PageTitleProps) => {
   return (
-    <div className='inline-flex w-full pb-3 mb-5 border-b'>
+    <div className='inline-flex w-full pb-3 mb-5 border-b border-dashed'>
         <div className='w-9 mt-1 mr-3'>
             {icon}
         </div>

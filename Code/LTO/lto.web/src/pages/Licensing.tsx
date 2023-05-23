@@ -16,6 +16,7 @@ import axiosAPI from "../api/axiosAPI"
 //Services
 import { getToken } from "../services/authService"
 import { API_URL_GET_LICENSES } from "../model/constant"
+import Badge from "../components/Badge"
 
 const Licensing = () => {
     const [licenseList, setLicenseList] = useState([] as LicenseDTO[])
@@ -88,7 +89,7 @@ const Licensing = () => {
                                                 <td className="p-2">{data.city}</td>
                                                 <td className="p-2">{data.renewDate?.toString()}</td>
                                                 <td className="p-2">{data.expirationDate?.toString()}</td>
-                                                <td className="p-2">{data.statusDescription}</td>
+                                                <td className="p-2">{<Badge description={data.statusDescription} type="status" />}</td>
                                                 <td className="p-2">{data.createdDate?.toString()}</td>
                                                 <td className="p-2">{data.modifiedDate?.toString()}</td>
                                             </tr>

@@ -15,3 +15,8 @@ export interface PageTitleProps {
     title:string;
     description:string;
 }
+
+export interface BadgeProps {
+    description:string;
+    type:string;
+}

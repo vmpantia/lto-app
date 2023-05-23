@@ -8,7 +8,7 @@ const Sidebar = () => {
             {
                 SidebarButtons.map(btn => {
                     return (
-                        <SidebarButton icon={btn.icon} text={btn.text} url={btn.url} />
+                        <SidebarButton key={btn.text} icon={btn.icon} text={btn.text} url={btn.url} />
                     )
                 })
             }
