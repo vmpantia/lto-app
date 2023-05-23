@@ -1,7 +1,7 @@
 import { BadgeProps } from "../model/Poperties/ComponentProperties"
 
 const Badge = ({description, type}:BadgeProps) => {
-    let defaultStyle = "text-xs font-medium text-white rounded py-0.5";
+    let defaultStyle = "text-xs text-white rounded";
     const getStyle = ():any => {
 
         let value = type.toLowerCase() + "-" + description.toLowerCase();
